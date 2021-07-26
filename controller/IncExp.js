@@ -7,7 +7,14 @@ exports.postAddData = (req, res, next) => {
   const Divisions = req.body.Divisions;
   const Description = req.body.Description;
   const Cash = req.body.Cash;
-
+  const arr = {
+    Type: Type,
+    Date: Date,
+    Categories: Categories,
+    Divisions: Divisions,
+    Description: Description,
+    Cash: Cash,
+  };
   const data = new Data({
     Type: Type,
     Date: Date,
@@ -18,11 +25,11 @@ exports.postAddData = (req, res, next) => {
   });
   data
     .save()
-    .then((res) => {
-      res.json({ message: res });
-      console.log(res);
+    .then((ress) => {
+      console.log(ress);
     })
     .catch((err) => console.log(err));
+  res.json({ message: arr });
 };
 
 exports.queryData = (req, res, next) => {

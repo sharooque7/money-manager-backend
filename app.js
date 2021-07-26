@@ -17,6 +17,10 @@ app.use(cors());
 //Routing
 app.use("/moneymanager", routes);
 
+app.use("/", (req, res, next) => {
+  res.json({ message: "Hello" });
+});
+
 mongoose
   .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {

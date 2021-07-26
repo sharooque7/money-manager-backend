@@ -18,9 +18,11 @@ exports.postAddData = (req, res, next) => {
   });
   data
     .save()
-    .then((res) => console.log(res))
+    .then((res) => {
+      res.json({ message: res });
+      console.log(res);
+    })
     .catch((err) => console.log(err));
-  res.json({ message: "hello" });
 };
 
 exports.queryData = (req, res, next) => {

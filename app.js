@@ -9,6 +9,7 @@ const express = require("express");
 
 const app = express();
 const port = process.env.PORT || 4000;
+const host = '0.0.0.0';
 const routes = require("./router/route");
 
 app.use(express.json());
@@ -24,7 +25,7 @@ app.use("/",(req,res,next)=>{
 mongoose
   .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
-    app.listen(port, () => console.log(`app is running on the ${port}`));
+    app.listen(port,host, () => console.log(`app is running on the ${port}`));
     console.log("connected");
   })
   .catch((err) => console.log(err));
